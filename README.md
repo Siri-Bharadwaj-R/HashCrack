@@ -50,24 +50,30 @@ HashCrack/
 │  app.py
 │  requirements.txt
 │  README.md
+│  wordlist.txt
 │
-├── cracker/                  # Attack engines and utilities
+├── cracker/                       # Attack engines and utilities
 │     ├── hashing.py
 │     ├── dictionary_attack.py
 │     ├── brute_force.py
 │     ├── rules_attack.py
 │     ├── smart_attack.py
-│     └── __init__.py
+│     ├── analysis.py
+│     ├── normalize.py
+│     ├── hash_analyzer.py
+│     └── builtin_wordlist.py
 │
-├── templates/                # Frontend HTML (UI)
+├── templates/                     # Frontend HTML templates (UI)
 │     ├── dashboard.html
 │     ├── crack.html
 │     ├── analyze.html
 │     ├── audit.html
-│     └── generator.html
+│     ├── generator.html
+│     └── result.html
 │
-└── static/                   # Styling and assets
+└── static/                        # Styling and assets
       └── style.css
+
 ```
 
 
