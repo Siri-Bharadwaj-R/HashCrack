@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HashCrack – Hash Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+  <rect width='100' height='100' rx='12' ry='12' fill='black'/>
+  <text x='20' y='60' font-size='55' fill='white' font-family='monospace'>&gt;_</text>
+</svg>">
+
+</head>
+<body>
+    <h1>HashCrack // Hash Analyzer</h1>
+
+    <div class="container">
+        <form method="POST">
+            <label>Hash to Analyze:</label>
+            <input type="text" name="hash_to_analyze" required>
+
+            <button type="submit">Analyze Hash</button>
+        </form>
+
+        <p style="margin-top: 18px; font-size: 0.9rem;">
+            ← <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+        </p>
+
+        {% if hash_value %}
+        <div class="result-box" style="margin-top: 20px;">
+            <p><strong>Hash:</strong> {{ hash_value }}</p>
+        </div>
+
+        {% if warnings %}
+        <div class="result-box" style="border-color:#ff4f4f; color:#ffbfbf; background:#200000; margin-top: 10px;">
+            <strong>Unicode Normalization Warnings:</strong>
+            <ul>
+            {% for w in warnings %}
+                <li>{{ w }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <div class="analysis-section">
+            <h3>Hash Fingerprint</h3>
+            <p>
+                <span class="badge">Length: {{ info.length }}</span>
+                <span class="badge">Type: {{ info.likely_type }}</span>
+                <span class="badge">Category: {{ info.category }}</span>
+            </p>
+
+            <p><strong>Difficulty:</strong> {{ info.difficulty }}</p>
+
+            {% if info.details %}
+                <p>Details:</p>
+                <ul>
+                {% for d in info.details %}
+                    <li>{{ d }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            <p style="margin-top: 10px;">
+                <strong>Recommended Attack Strategy:</strong><br>
+                {{ info.recommended_attack }}
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
