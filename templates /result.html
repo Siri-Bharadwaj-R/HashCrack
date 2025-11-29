@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HashCrack – Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+  <rect width='100' height='100' rx='12' ry='12' fill='black'/>
+  <text x='20' y='60' font-size='55' fill='white' font-family='monospace'>&gt;_</text>
+</svg>">
+
+</head>
+<body>
+
+<h1>HashCrack // Cracking Result</h1>
+
+<div class="container">
+
+    <div class="result-box">
+        {% if result %}
+            <p><strong>Password Found:</strong> {{ result }}</p>
+        {% else %}
+            <p><strong>Password not found.</strong></p>
+        {% endif %}
+        <p><strong>Time Taken:</strong> {{ time }} seconds</p>
+    </div>
+
+    {% if warnings %}
+    <div class="warning-box">
+        <strong>Normalization Warnings:</strong>
+        <ul>
+            {% for w in warnings %}
+            <li>{{ w }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if analysis %}
+    <div class="analysis-section">
+        <h3>Password Strength Analysis</h3>
+
+        <p>
+            <span class="badge">Length: {{ analysis.length }}</span>
+            <span class="badge">Entropy: {{ analysis.entropy }} bits</span>
+            <span class="badge strength">{{ analysis.strength }}</span>
+        </p>
+
+        <p>
+            Character sets used:
+            {% if analysis.uses_lower %}<span class="badge">lowercase</span>{% endif %}
+            {% if analysis.uses_upper %}<span class="badge">UPPERCASE</span>{% endif %}
+            {% if analysis.uses_digits %}<span class="badge">digits</span>{% endif %}
+            {% if analysis.uses_symbols %}<span class="badge">symbols</span>{% endif %}
+        </p>
+
+        <p>
+            Estimated crack time (bruteforce):<br>
+            CPU (10M/s): <strong>{{ analysis.cpu_time }}</strong><br>
+            GPU (10B/s): <strong>{{ analysis.gpu_time }}</strong>
+        </p>
+
+        {% if analysis.patterns %}
+            <p>Detected patterns / weaknesses:</p>
+            <ul>
+                {% for p in analysis.patterns %}
+                <li>{{ p }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <p style="margin-top: 18px;">
+        <a href="{{ url_for('crack') }}">⟵ Try another hash</a>
+    </p>
+
+</div>
+
+</body>
+</html>
