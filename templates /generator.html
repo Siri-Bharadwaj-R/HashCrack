@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HashCrack – Hash Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+  <rect width='100' height='100' rx='12' ry='12' fill='black'/>
+  <text x='20' y='60' font-size='55' fill='white' font-family='monospace'>&gt;_</text>
+</svg>">
+</head>
+<body>
+
+<h1>HashCrack // Hash Generator</h1>
+
+<div class="container">
+
+    <form method="POST">
+        <label>Enter text:</label>
+        <input type="text" name="text_input" required value="{{ text }}">
+
+        <button type="submit">Generate Hashes</button>
+    </form>
+
+    {% if warnings %}
+    <div class="warning-box">
+        <strong>Warnings:</strong>
+        <ul>
+            {% for w in warnings %}
+            <li>{{ w }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if hashes %}
+    <div class="result-box">
+        <h3>Generated Hashes</h3>
+
+        <p><strong>MD5:</strong> {{ hashes.MD5 }}</p>
+        <p><strong>SHA1:</strong> {{ hashes.SHA1 }}</p>
+        <p><strong>SHA-256:</strong> {{ hashes.SHA256 }}</p>
+        <p><strong>SHA-512:</strong> {{ hashes.SHA512 }}</p>
+    </div>
+    {% endif %}
+
+    <p style="margin-top: 18px;">
+        <a href="{{ url_for('dashboard') }}">⟵ Back to Dashboard</a>
+    </p>
+</div>
+</body>
+</html>
