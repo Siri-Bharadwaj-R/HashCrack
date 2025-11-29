@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HashCrack – Crack a Hash</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+  <rect width='100' height='100' rx='12' ry='12' fill='black'/>
+  <text x='20' y='60' font-size='55' fill='white' font-family='monospace'>&gt;_</text>
+</svg>">
+
+</head>
+<body>
+    <h1>HashCrack // Password Hash Cracker</h1>
+
+    <p style="text-align:center; margin-top:-10px;">
+        <a href="{{ url_for('dashboard') }}">← Back to Dashboard</a>
+    </p>
+
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
+            <label>Hash Value:</label>
+            <input type="text" name="hash" required>
+
+            <label>Algorithm:</label>
+            <select name="algo">
+                <option value="md5">MD5</option>
+                <option value="sha1">SHA1</option>
+                <option value="sha256">SHA-256</option>
+                <option value="sha512">SHA-512</option>
+            </select>
+
+            <label>Attack Method:</label>
+            <select name="attack">
+                <option value="dictionary">Dictionary (built-in or file)</option>
+                <option value="rules">Rules-Based (built-in or file)</option>
+                <option value="smart">Smart Attack (built-in + base word)</option>
+                <option value="bruteforce">Brute Force (short passwords)</option>
+            </select>
+
+            <label>Base word / username (optional):</label>
+            <input type="text" name="base_word" placeholder="e.g. hello, india, username">
+
+            <label>Upload Wordlist (optional):</label>
+            <input type="file" name="wordlist">
+
+            <button type="submit">Start Cracking</button>
+        </form>
+
+        <p style="margin-top: 18px;">
+            Want to inspect a hash instead?  
+            <a href="{{ url_for('analyze') }}">Open Hash Analyzer →</a>
+        </p>
+    </div>
+</body>
+</html>
