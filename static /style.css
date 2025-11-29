@@ -1,0 +1,127 @@
+body {
+    background-color: #050810;
+    color: #e5ffe5;
+    font-family: "Fira Code", Consolas, monospace;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 40px;
+    color: #7af57a;
+    text-shadow: 0 0 10px #00ff7f;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: rgba(5, 10, 20, 0.95);
+    border: 1px solid #00ff7f33;
+    border-radius: 14px;
+    padding: 24px 30px;
+    box-shadow: 0 0 25px #00ff7f22;
+}
+
+label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+    color: #a8ffbf;
+}
+
+input[type="text"],
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #00ff7f55;
+    background: #040711;
+    color: #e5ffe5;
+    outline: none;
+}
+
+input[type="text"]:focus,
+select:focus,
+input[type="file"]:focus {
+    border-color: #00ff7f;
+    box-shadow: 0 0 6px #00ff7f66;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #0cff7f;
+    border: none;
+    border-radius: 999px;
+    color: #020305;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    box-shadow: 0 0 12px #00ff7f88;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 20px #00ff7faa;
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 8px #00ff7f77;
+}
+
+.result-box {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: #02040a;
+    border: 1px solid #00ff7f33;
+    font-size: 0.95rem;
+}
+
+.result-box strong {
+    color: #7af57a;
+}
+
+.analysis-section {
+    margin-top: 22px;
+    padding-top: 12px;
+    border-top: 1px dashed #00ff7f55;
+}
+
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    margin-right: 6px;
+    background: #06141a;
+    border: 1px solid #00ff7f55;
+}
+
+.strength {
+    font-weight: 700;
+    color: #7af57a;
+}
+
+a {
+    color: #7af57a;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.result-box,
+.analysis-section,
+.warning-box {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
